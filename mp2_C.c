@@ -11,10 +11,7 @@ int main()
 	
 	double matrix[n][3];
 	int* results = (int*)malloc(n*sizeof(int));
-	if(results == NULL){
-		printf("Memory not allocated.\n");
-		exit(0);	
-	}
+	
 	int i, j;
 	for(i = 0; i < n; i++){
 		for(j = 0; j < 3; j++){
@@ -33,8 +30,9 @@ int main()
 	}
 	asmaccel(n, matrix, results);
 	
+	printf("Acceleration Results\n");
 	for(i = 0; i < n; i++)
-		printf("%d ", results[i]);
+		printf("%d\n", results[i]);
 	
 	
 	return 0;
