@@ -33,6 +33,9 @@ int main()
 	}
 	asmaccel(n, matrix, results);
 	
+	for(i = 0; i < n; i++)
+		printf("%d ", results[i]);
+	
 	
 	return 0;
 }
