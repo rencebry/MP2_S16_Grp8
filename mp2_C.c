@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-extern int asmaccel( int n, double* matrix, int* results);
+extern void asmaccel( int n, double* matrix, int* results);
 
 int main() 
 {
@@ -28,7 +28,7 @@ int main()
 			}
 		}
 	}
-	asmaccel(n, matrix, results);
+	asmaccel(n, (double*) matrix, results);
 	
 	printf("Acceleration Results\n");
 	for(i = 0; i < n; i++)
