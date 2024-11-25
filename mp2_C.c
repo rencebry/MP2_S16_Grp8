@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-extern void asmaccel(double vec1, double vec2, int time);
+extern int asmaccel(double vec1, double vec2, int time);
 
 int main() 
 {
@@ -31,8 +31,8 @@ int main()
 
 
 	// per row asmaccel() is called 
-	for(int i = 0; i < n; i++) {
-        results[i] = asmaccel(matrix[i]); 
+	for(i = 0; i < n; i++) {
+        results[i] = asmaccel(matrix[i][0], matrix[i][1], matrix[i][2]); 
     }
     
 	

@@ -1,3 +1,5 @@
+section .data
+var1 dq 3.6
 
 section .text
 bits 64
@@ -7,7 +9,7 @@ global asmaccel
 asmaccel:
   
     ; divisor for conversion
-    movsd xmm2, 3.6
+    movsd xmm2, [var1]
     
     ; convert each register's value
     
@@ -27,19 +29,3 @@ asmaccel:
     cvttsd2si eax, xmm1
        
     ret
-    
-; for reference only
-
-; asmvecsub:
-    ; n@rcx, vec1@rdx, vec2@r8, vec3@r9
-  ;  L1:
-   ;     mov rax, [rdx]
-   ;    mov rbx, [r8]
-   ;    sub rax, rbx
-   ;    mov [r9], rax
-   ;    add rdx, 4
-   ;    add r8, 4
-   ;    add r9, 4
-   ;    loop L1
-        
-    ;ret
