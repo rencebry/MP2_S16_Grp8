@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-extern void asmaccel( int n, double* matrix, int* results);
+extern void asmaccel(double vec1, double vec2, int time);
 
 int main() 
 {
