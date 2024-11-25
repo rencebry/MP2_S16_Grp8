@@ -1,5 +1,6 @@
 section .data
-var1 dq 3.6
+km dq 1000
+hr dq 3600
 
 section .text
 bits 64
@@ -7,25 +8,23 @@ default rel
 global asmaccel
 
 asmaccel:
-  
-    ; divisor for conversion
-    movsd xmm2, [var1]
-    
-    ; convert each register's value
-    
-    divsd xmm0, xmm2
-    divsd xmm1, xmm2
+    ; initialvel@xmm0, finalvel@xmm1, time@xmm2
     
     ; calculate numerator
-    
     subsd xmm1, xmm0 
     
+    ; convert to m/s
+    movsd xmm3, [km]
+    mulsd xmm1, xmm3
+    movsd xmm3, [hr]
+    divsd xmm1, xmm3
+    
     ; divide by time
-    cvtsi2sd xmm2, edi
     divsd xmm1, xmm2
     
     ; round and convert to int
     roundsd xmm1, xmm1, 0
-    cvttsd2si eax, xmm1
+    cvttsd2si rax, xmm1
        
     ret
+    

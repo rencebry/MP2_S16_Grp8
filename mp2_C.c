@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-extern int asmaccel(double vec1, double vec2, int time);
+extern int asmaccel(double vec1, double vec2, double time);
 
 int main() 
 {
