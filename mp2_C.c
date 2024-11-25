@@ -28,7 +28,13 @@ int main()
 			}
 		}
 	}
-	asmaccel(n, (double*) matrix, results);
+
+
+	// per row asmaccel() is called 
+	for(int i = 0; i < n; i++) {
+        results[i] = asmaccel(matrix[i]); 
+    }
+    
 	
 	printf("Acceleration Results\n");
 	for(i = 0; i < n; i++)
