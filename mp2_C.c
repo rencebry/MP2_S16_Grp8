@@ -31,7 +31,6 @@ int main()
 		}
 	}
 
-
 	clock_t exec_time;
 	exec_time = clock();
 	for(i = 0; i < n; i++) {
@@ -47,7 +46,7 @@ int main()
 	for(i = 0; i < n; i++)
 		printf("%d\n", results[i]);
 	
-	printf("\nTotal execution time of function: %.8lfs", time_taken);
+	printf("\nTotal execution time of asmaccel(): %.8lfs", time_taken);
 	
 	return 0;
 }
