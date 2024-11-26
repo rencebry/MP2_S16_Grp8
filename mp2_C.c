@@ -7,6 +7,7 @@ extern int asmaccel(double vec1, double vec2, double time);
 int main() 
 {
 	int n;
+	double total_time;
 	printf("Enter number of cars: ");
 	scanf("%d", &n);
 	
@@ -30,14 +31,18 @@ int main()
 		}
 	}
 
-	clock_t exec_time;
-	exec_time = clock();
-	for(i = 0; i < n; i++) {
-        results[i] = asmaccel(matrix[i][0], matrix[i][1], matrix[i][2]); 
-    }
-    exec_time = clock() - exec_time;
+	
 
-	double time_taken = ((double)exec_time)/CLOCKS_PER_SEC;
+	for(i = 0; i < n; i++) {
+		clock_t begin = clock();
+        results[i] = asmaccel(matrix[i][0], matrix[i][1], matrix[i][2]); 
+		clock_t end = clock();
+		double time_taken = (double)(end - begin) / CLOCKS_PER_SEC;
+		total_time += time_taken;
+	}
+    
+	
+	
 
 
 	
@@ -45,7 +50,7 @@ int main()
 	for(i = 0; i < n; i++)
 		printf("%d\n", results[i]);
 	
-	printf("\nTotal execution time of asmaccel(): %.8lfs", time_taken);
+	printf("\nTotal execution time of asmaccel(): %.20lfs", total_time);
 	
 	return 0;
 }
